@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "675418775697",
+    "firebase_url": "https://galeford-86f9b.firebaseio.com",
+    "project_id": "galeford-86f9b",
+    "storage_bucket": "galeford-86f9b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:675418775697:android:5576d9fe406d671016df30",
+        "android_client_info": {
+          "package_name": "com.example.galeford"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "675418775697-n6e6o5hmltfeqcdsnbktt687k2g1nk1r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.galeford",
+            "certificate_hash": "e3c190f3187a085b7ce94e85b9b7ff2a76dca973"
+          }
+        },
+        {
+          "client_id": "675418775697-erjgm16rljgnov0isulge1ug16gplb0v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvankFvBQQQiSTTDZFdyybcZwtgYPIaTU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "675418775697-erjgm16rljgnov0isulge1ug16gplb0v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
