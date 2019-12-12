@@ -43,12 +43,8 @@ public class SignupActivity extends AppCompatActivity {
         pswd = findViewById(R.id.password);
         mobile = findViewById(R.id.phoneno);
         username = findViewById(R.id.username);
-//
-//        female = findViewById(R.id.female);
-//        male = findViewById(R.id.male);
-//
+
         signupbtn = findViewById(R.id.signupSubmitBtn);
-//        nameLayout = findViewById(R.id.namelayout);
 
         toolbar = findViewById(R.id.galeford_toolbar);
         setSupportActionBar(toolbar);

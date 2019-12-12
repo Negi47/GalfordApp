@@ -81,14 +81,12 @@ public class AdminUploadActivity extends AppCompatActivity {
         itemdetails = findViewById(R.id.itemdetails);
         productSubmitProgressBar = findViewById(R.id.productSubmitProgressBar);
 
-
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 imageButton.setVisibility(imageButton.VISIBLE);
                 imagedressview.setVisibility(imagedressview.GONE);
-
 
                 imageUploadPreview();
             }
@@ -162,5 +160,4 @@ public class AdminUploadActivity extends AppCompatActivity {
                     });
         }
     }
-
 }

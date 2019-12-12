@@ -18,7 +18,7 @@
             layout="@layout/galeford_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:elevation= "4dp"/>
+            android:elevation="4dp" />
 
         <ScrollView
             android:layout_width="match_parent"
@@ -26,8 +26,8 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -37,80 +37,166 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_margin="3dp"
                         android:layout_weight="1"
                         android:orientation="vertical">
 
                         <ImageView
                             android:id="@+id/imageView"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            tools:srcCompat="@tools:sample/avatars" />
+                            android:layout_height="65dp"
+                            android:background="@drawable/babyboy" />
 
                         <TextView
                             android:id="@+id/textView2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="TextView" />
+                            android:background="@color/white"
+                            android:gravity="center"
+                            android:padding="2dp"
+                            android:text="Baby Boy"
+                            android:textAllCaps="true"
+                            android:textColor="@color/Black"
+                            android:textSize="12sp" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_margin="3dp"
                         android:layout_weight="1"
                         android:orientation="vertical">
 
                         <ImageView
                             android:id="@+id/imageView2"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            tools:srcCompat="@tools:sample/avatars" />
+                            android:layout_height="65dp"
+                            android:background="@drawable/babygirl" />
 
                         <TextView
                             android:id="@+id/textView3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="TextView" />
+                            android:background="@color/white"
+                            android:gravity="center"
+                            android:padding="2dp"
+                            android:text="Baby Girl"
+                            android:textAllCaps="true"
+                            android:textColor="@color/Black"
+                            android:textSize="12sp" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_margin="3dp"
                         android:layout_weight="1"
+                        android:background="@android:color/holo_red_light"
                         android:orientation="vertical">
 
                         <ImageView
                             android:id="@+id/imageView3"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            tools:srcCompat="@tools:sample/avatars" />
+                            android:layout_width="65dp"
+                            android:layout_height="65dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/sale" />
 
                         <TextView
                             android:id="@+id/textView4"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="TextView" />
+                            android:background="@color/white"
+                            android:gravity="center"
+                            android:padding="2dp"
+                            android:text="Sale"
+                            android:textAllCaps="true"
+                            android:textColor="@color/Black"
+                            android:textSize="12sp" />
                     </LinearLayout>
                 </LinearLayout>
 
-                <ImageView
-                    android:id="@+id/imageView4"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:srcCompat="@tools:sample/avatars" />
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:padding="2dp">
+
+                        <ImageButton
+                            android:id="@+id/imageButton2"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="58dp"
+                            android:background="@drawable/price_tag"
+                            android:padding="10dp"
+                            android:rotation="260" />
+
+                        <TextView
+                            android:id="@+id/textView9"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="50dp"
+                            android:padding="10dp"
+                            android:text="Prices Are Inclusive Of All Taxes"
+                            android:textColor="@color/Black"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="vertical">
+
+                    <FrameLayout
+                        android:id="@+id/fragment_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <com.synnapps.carouselview.CarouselView
+                            android:id="@+id/carouselView"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            app:fillColor="#161515"
+                            app:pageColor="#00000000"
+                            app:radius="6dp"
+                            app:slideInterval="5000"
+                            app:strokeColor="#FF777777"
+                            app:strokeWidth="1dp">
+
+                        </com.synnapps.carouselview.CarouselView>
+
+                    </FrameLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imageView5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/newdress" />
+                </LinearLayout>
 
             </LinearLayout>
         </ScrollView>
 
     </LinearLayout>
-
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/nav_view"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            app:menu="@menu/nav_menu"
-            app:headerLayout="@layout/header_nav" />
-
 
 
 </androidx.drawerlayout.widget.DrawerLayout>
