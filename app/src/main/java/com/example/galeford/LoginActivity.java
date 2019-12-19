@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.galeford.models.Users;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -23,10 +24,13 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.ArrayList;
 
 public class LoginActivity extends AppCompatActivity {
 
-    Button googlebtn,facebookbtn,emailbtn;
+    Button googlebtn,emailbtn;
     TextView signup, termcondi;
 
     private final static int RC_SIGN_IN = 2;
@@ -39,7 +43,6 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         googlebtn = findViewById(R.id.logingoogle);
-        facebookbtn = findViewById(R.id.loginfacebook);
         emailbtn = findViewById(R.id.loginemail);
 
         signup=findViewById(R.id.signup);
@@ -48,6 +51,11 @@ public class LoginActivity extends AppCompatActivity {
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
+
+        if (mAuth.getCurrentUser() != null) {
+            finish();
+            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+        }
 
         // Configure Google Sign In
         GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -121,13 +129,25 @@ public class LoginActivity extends AppCompatActivity {
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Log.d("TAG", "SignIn SUCCESS");
+                        if (task.isSuccessful() && task.getResult() != null) {
+                            final Users user = new Users(
+                                    task.getResult().getUser().getEmail().split("@")[0],
+                                    task.getResult().getUser().getEmail(),
+                                    "",
+                                    task.getResult().getUser().getPhoneNumber(),
+                                    new ArrayList<String>(),
+                                    task.getResult().getUser().getPhotoUrl().toString());
 
-                            FirebaseUser user = mAuth.getCurrentUser();
-
-                            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
-                            finish();
+                            FirebaseFirestore.getInstance().collection(TableNames.USERS)
+                                    .document(task.getResult().getUser().getUid())
+                                    .set(user)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            finish();
+                                            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                                        }
+                                    });
                         }
                         else {
                             Log.d("TAG", "SignIn ERROR" + task.getException());
@@ -137,8 +157,6 @@ public class LoginActivity extends AppCompatActivity {
                 });
     }
 // Code Ends Here **
-
-
 
 
 }

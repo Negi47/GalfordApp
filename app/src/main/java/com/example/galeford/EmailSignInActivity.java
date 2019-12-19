@@ -23,7 +23,6 @@ public class EmailSignInActivity extends AppCompatActivity {
     private static FirebaseAuth mAuth;
     EditText mailid,password;
     Button loginbtn;
-    TextView forgetpswd;
     Toolbar toolbar;
 
     @Override
@@ -48,7 +47,6 @@ public class EmailSignInActivity extends AppCompatActivity {
         mailid = findViewById(R.id.emailid);
         password = findViewById(R.id.password);
         loginbtn = findViewById(R.id.loginbtn);
-        forgetpswd = findViewById(R.id.forgetpswd);
 
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -11,14 +11,21 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.galeford.models.Users;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,8 +36,10 @@ public class SignupActivity extends AppCompatActivity {
     Button signupbtn;
     TextInputLayout nameLayout;
     Toolbar toolbar;
+    ProgressBar signupProgressBar;
 
     FirebaseFirestore db;
+    FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,15 +47,17 @@ public class SignupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
 
         db = FirebaseFirestore.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
 
         mailid = findViewById(R.id.emailid);
         pswd = findViewById(R.id.password);
         mobile = findViewById(R.id.phoneno);
         username = findViewById(R.id.username);
+        signupProgressBar = findViewById(R.id.signupProgressBar);
 
         signupbtn = findViewById(R.id.signupSubmitBtn);
 
-        toolbar = findViewById(R.id.galeford_toolbar);
+        toolbar = findViewById(R.id.galefordtoolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("Signup");
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black);
@@ -88,30 +99,46 @@ public class SignupActivity extends AppCompatActivity {
 
     public void signupDataSave(String emailid,String fullname,String password,String contact){
 
-        Map<String, Object> signupdb = new HashMap<>();
+        final Users user = new Users(fullname, emailid, password, contact, new ArrayList<String>(), null);
 
-        signupdb.put("usrename",fullname);
-        signupdb.put("emailid", emailid);
-        signupdb.put("password",password);
-        signupdb.put("contact",contact);
-
-        db.collection("signup")
-                .add(signupdb)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+        firebaseAuth.createUserWithEmailAndPassword(emailid, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
-                    public void onSuccess(DocumentReference documentReference) {
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful() && task.getResult() != null) {
+                            db.collection(TableNames.USERS)
+                                    .document(task.getResult().getUser().getUid())
+                                    .set(user)
+                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
 
-                        Log.d("SIGNUP LOG", "DocumentSnapshot added with ID: " + documentReference.getId());
-                        Toast.makeText(SignupActivity.this, "Saved", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.d("Error: ", "DocumentSnapshot added with ID: ",e);
-                        Toast.makeText(SignupActivity.this, "Not Saved", Toast.LENGTH_SHORT).show();
+                                            signupProgressBar.setVisibility(View.GONE);
+                                            signupbtn.setVisibility(View.VISIBLE);
+
+                                            Log.d("SIGNUP LOG", "DocumentSnapshot added with ID: ");
+                                            Toast.makeText(SignupActivity.this, "Saved", Toast.LENGTH_SHORT).show();
+                                            startActivity(new Intent(SignupActivity.this,LoginActivity.class));
+
+                                        }
+                                    }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.d("Error: ", "DocumentSnapshot added with ID: ",e);
+                                            Toast.makeText(SignupActivity.this, "Not Saved", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                        else {
+                            Toast.makeText(
+                                    SignupActivity.this,
+                                    "Enter the Correct Details",
+                                    Toast.LENGTH_LONG
+                            ).show();
+                        }
                     }
                 });
+
     }
 
 }

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/productLInearTagId"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/linearborder"
     android:orientation="vertical"
-    android:padding="2dp">
+    android:padding="1dp">
 
     <ImageView
         android:id="@+id/productItemImage"
@@ -18,6 +19,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -31,36 +33,55 @@
                 android:id="@+id/productItemName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:clickable="true"
+                android:padding="2dp"
+                android:text="productItemName"
+                android:textColor="@color/Black" />
 
             <TextView
-                android:id="@+id/textView14"
+                android:id="@+id/productItemDetails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:autoText="true"
+                android:text="productItemDetails"
+                android:textSize="12sp" />
 
             <TextView
-                android:id="@+id/textView15"
+                android:id="@+id/productItemPrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:padding="2dp"
+                android:text="productItemPrice"
+                android:textColor="@color/Black" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="top"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:gravity="right|top"
+            android:orientation="horizontal">
 
             <ImageButton
-                android:id="@+id/productItemFavBtn"
+                android:id="@+id/productItemUnlikeBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
+                android:layout_gravity="right|top"
                 android:background="@color/white"
                 android:padding="5dp"
-                app:srcCompat="@drawable/ic_favorite_black_24dp" />
+                app:srcCompat="@drawable/ic_favorite_red" />
+
+            <ImageButton
+                android:id="@+id/productItemLikeBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|top"
+                android:background="@color/white"
+                android:padding="5dp"
+                android:visibility="gone"
+                app:srcCompat="@drawable/ic_favorite_red" />
 
         </LinearLayout>
 

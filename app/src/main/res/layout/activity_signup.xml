@@ -8,6 +8,7 @@
     tools:context=".SignupActivity">
 
     <include
+        android:id="@+id/galefordtoolbar"
         layout="@layout/galeford_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -32,10 +33,11 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/emailid"
-                android:inputType="textEmailAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email address*" />
+                android:hint="Email address*"
+                android:inputType="textEmailAddress"
+                android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
@@ -50,44 +52,13 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/password"
-                    android:inputType="textPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Password*" />
+                    android:hint="Password*"
+                    android:inputType="textPassword"
+                    android:textSize="14sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
-
-                <TextView
-                    android:id="@+id/charSizeTag"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="8 Character"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/specialCharTag"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:text="1 Special"
-                    app:layout_constraintStart_toEndOf="@+id/charSizeTag"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/uppercaseCharTag"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:text="1 Numeric"
-                    app:layout_constraintStart_toEndOf="@+id/specialCharTag"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -99,7 +70,8 @@
                 android:id="@+id/phoneno"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Mobile Number" />
+                android:hint="Mobile Number*"
+                android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -111,29 +83,9 @@
                 android:id="@+id/username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Full Name" />
+                android:hint="Full Name*"
+                android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/maleRadioBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Male" />
-
-            <RadioButton
-                android:id="@+id/radioButton2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Female" />
-        </LinearLayout>
 
         <Button
             android:id="@+id/signupSubmitBtn"
@@ -143,6 +95,13 @@
             android:background="@color/colorAccent"
             android:text="CREATE ACCOUNT"
             android:textColor="@color/white" />
+
+        <ProgressBar
+            android:id="@+id/signupProgressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
 
     </LinearLayout>
 </LinearLayout>

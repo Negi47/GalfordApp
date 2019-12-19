@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="SORT BY" />
+
+    <View
+        android:id="@+id/divider3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="?android:attr/listDivider" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupProductSort"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RadioButton
+            android:id="@+id/radioButtonhightolow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Price- high to low" />
+
+        <RadioButton
+            android:id="@+id/radioButtonpopularity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Product Popularity" />
+
+        <RadioButton
+            android:id="@+id/radioButtonlowtohigh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Price- low to high" />
+    </RadioGroup>
+
+</LinearLayout>

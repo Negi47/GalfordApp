@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:showIn="navigation_view">
+
+        <group android:checkableBehavior="single">
+
+            <item android:id="@+id/nav_baby_boy"
+                android:title="Baby Boy"
+                android:icon="@drawable/boy"/>
+
+            <item android:id="@+id/nav_baby_girl"
+                android:title="Baby Girl"
+                android:icon="@drawable/doll"/>
+
+            <item android:id="@+id/nav_wishlist"
+                android:title="Wishlist"
+                android:icon="@drawable/ic_favorite_red" />
+
+            <item android:id="@+id/nav_account"
+                android:title="Account"
+                android:icon="@drawable/ic_favorite_red"/>
+
+        </group>
+</menu>

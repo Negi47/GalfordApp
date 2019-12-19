@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+<!--    <item-->
+<!--        android:id="@+id/bottom_nav_home"-->
+<!--&lt;!&ndash;        android:icon="@drawable/ic_sort_black"&ndash;&gt;-->
+<!--        android:title="SORT"/>-->
+
+    <item
+        android:id="@+id/bottom_nav_collection"
+        android:icon="@drawable/ic_filter_list_black"
+        android:title="FILTER"/>
+
 </menu>
