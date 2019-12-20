@@ -3,6 +3,7 @@ package com.example.galeford;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.ClipData;
 import android.content.ContentResolver;
@@ -10,6 +11,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
@@ -56,6 +59,7 @@ public class AdminUploadActivity extends AppCompatActivity {
     List<Uri> imagePreview = new ArrayList<>();
     EditText itemname,itemprice,itemdetails;
     ProgressBar productSubmitProgressBar;
+    Toolbar toolbar;
 
     int fileUploadsCount = 0;
 
@@ -106,6 +110,9 @@ public class AdminUploadActivity extends AppCompatActivity {
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         firebaseStorage = FirebaseStorage.getInstance();
         storageReference = firebaseStorage.getReference("productUploads");
+
+        toolbar = findViewById(R.id.galeford_toolbar);
+        setSupportActionBar(toolbar);
 
         chooseMultipleImgBtn = findViewById(R.id.chooseMultipleImgBtn);
 
@@ -166,6 +173,33 @@ public class AdminUploadActivity extends AppCompatActivity {
 
     }
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.profile_toolbar_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()) {
+
+            case R.id.profile_toolbar_icon:
+
+//                if (FirebaseAuth.getInstance().getCurrentUser() != null){
+
+//                    FirebaseAuth.getInstance().getCurrentUser() = null;
+                    startActivity(new Intent(AdminUploadActivity.this, LoginActivity.class));
+
+//                }
+
+                break;
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     private void imageUploadPreview(){
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -221,8 +255,6 @@ public class AdminUploadActivity extends AppCompatActivity {
         }
 
     }
-
-
 
 
     public void insertToDatabase(final Products product) {
